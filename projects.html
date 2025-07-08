@@ -13,6 +13,7 @@
             --gray: #1a1a1a;
             --light-gray: #333;
             --accent: #fff;
+            --hashtag-color: #FBAE4F;
         }
 
         * {
@@ -232,6 +233,37 @@
         .project-card p {
             font-size: 1rem;
             opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .download-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--light-gray);
+            border-radius: 25px 25px 25px 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .download-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .download-button i {
+            font-size: 1rem;
+        }
+
+        .hashtag {
+            display: block;
+            color: var(--hashtag-color);
+            font-size: 0.8rem;
+            margin-top: 5px;
+            text-align: center;
         }
 
         /* Подвал */
@@ -312,82 +344,119 @@
             .project-card p {
                 font-size: 0.9rem;
             }
+
+            .download-button {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+
+            .download-button i {
+                font-size: 0.9rem;
+            }
+
+            .hashtag {
+                font-size: 0.7rem;
+            }
         }
     </style>
 </head>
 <body>
-<!-- Анимированный фон -->
-<div class="animated-bg">
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="line"></div>
-    <div class="circle"></div>
-    <div class="circle"></div>
-    <div class="square"></div>
-</div>
-
-<header class="sticky-header">
-    <nav>
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="#" class="active">Projects</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-    </nav>
-</header>
-
-<main class="projects-section">
-    <h2>Мои проекты</h2>
-    <div class="projects-grid">
-        <div class="project-card">
-            <h3>AoLanguage</h3>
-            <p>Плагин для PocketMine-MP, обеспечивающий мультиязычную поддержку на серверах Minecraft. Позволяет игрокам выбирать язык интерфейса, упрощая взаимодействие для международного сообщества. Написан на PHP с акцентом на производительность и простоту интеграции.</p>
-        </div>
-        <div class="project-card">
-            <h3>Seasons</h3>
-            <p>Плагин для PocketMine-MP, добавляющий динамическую систему сезонов в игровой мир. Включает изменения погоды, текстур и событий, зависящих от времени года, для повышения вовлечённости игроков. Разработан с использованием PHP и API сервера.</p>
-        </div>
-        <div class="project-card">
-            <h3>Quests</h3>
-            <p>Плагин для PocketMine-MP, реализующий систему квестов. Игроки могут выполнять задания, получать награды и участвовать в сюжетных линиях. Разработан для гибкости, с поддержкой кастомизации через конфигурационные файлы.</p>
-        </div>
+    <!-- Анимированный фон -->
+    <div class="animated-bg">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="square"></div>
     </div>
-</main>
+    
+    <header class="sticky-header">
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#" class="active">Projects</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<footer>
-    <div class="footer-content">
-        <p>© 2023 Ruslan Karepanov. All rights reserved</p>
-        <div class="scroll-hint">
-            <div class="mouse">
-                <div class="wheel"></div>
+    <main class="projects-section">
+        <h2>Мои проекты</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <h3>AoLanguage</h3>
+                <p>Плагин для PocketMine-MP, обеспечивающий мультиязычную поддержку на серверах Minecraft. Позволяет игрокам выбирать язык интерфейса, упрощая взаимодействие для международного сообщества. Написан на PHP с акцентом на производительность и простоту интеграции.</p>
+                <a href="#" class="download-button" aria-label="Download AoLanguage plugin"><i class="fas fa-download"></i> Download</a>
+                <span class="hashtag">#pocketmine-pm5</span>
             </div>
-            <p>Листайте вниз</p>
+            <div class="project-card">
+                <h3>Seasons</h3>
+                <p>Плагин для PocketMine-MP, добавляющий динамическую систему сезонов в игровой мир. Включает изменения погоды, текстур и событий, зависящих от времени года, для повышения вовлечённости игроков. Разработан с использованием PHP и API сервера.</p>
+            </div>
+            <div class="project-card">
+                <h3>Quests</h3>
+                <p>Плагин для PocketMine-MP, реализующий систему квестов. Игроки могут выполнять задания, получать награды и участвовать в сюжетных линиях. Разработан для гибкости, с поддержкой кастомизации через конфигурационные файлы.</p>
+            </div>
         </div>
-    </div>
-</footer>
+    </main>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Анимация фона
-        const bgElements = document.querySelectorAll('.animated-bg > *');
-        bgElements.forEach(el => {
-            const randomDelay = Math.random() * 2;
-            el.style.animationDelay = `${randomDelay}s`;
-        });
+    <footer>
+        <div class="footer-content">
+            <p>© 2023 Ruslan Karepanov. All rights reserved</p>
+            <div class="scroll-hint">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <p>Листайте вниз</p>
+            </div>
+        </div>
+    </footer>
 
-        // Анимация проектных карточек
-        const projectCards = document.querySelectorAll('.project-card');
-        projectCards.forEach((card, index) => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(20px)';
-            setTimeout(() => {
-                card.style.opacity = '1';
-                card.style.transform = 'translateY(0)';
-                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            }, 300 + index * 100);
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Анимация фона
+            const bgElements = document.querySelectorAll('.animated-bg > *');
+            bgElements.forEach(el => {
+                const randomDelay = Math.random() * 2;
+                el.style.animationDelay = `${randomDelay}s`;
+            });
+
+            // Анимация проектных карточек, кнопки и хештега
+            const projectCards = document.querySelectorAll('.project-card');
+            const downloadButton = document.querySelector('.download-button');
+            const hashtag = document.querySelector('.hashtag');
+            projectCards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                }, 300 + index * 100);
+            });
+
+            if (downloadButton) {
+                downloadButton.style.opacity = '0';
+                downloadButton.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    downloadButton.style.opacity = '1';
+                    downloadButton.style.transform = 'translateY(0)';
+                    downloadButton.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                }, 600);
+            }
+
+            if (hashtag) {
+                hashtag.style.opacity = '0';
+                hashtag.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    hashtag.style.opacity = '1';
+                    hashtag.style.transform = 'translateY(0)';
+                    hashtag.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                }, 700);
+            }
         });
-    });
-</script>
+    </script>
 </body>
 </html>
