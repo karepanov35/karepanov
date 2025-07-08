@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruslan Karepanov | Home</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
             --black: #000;
@@ -13,7 +13,11 @@
             --gray: #1a1a1a;
             --light-gray: #333;
             --accent: #fff;
-            --orange: #FBAE4F;
+            --code-bg: #1e1e1e;
+            --keyword: #569cd6;
+            --string: #ce9178;
+            --class: #4ec9b0;
+            --variable: #9cdcfe;
         }
 
         * {
@@ -131,6 +135,16 @@
             100% { transform: rotate(360deg); }
         }
 
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes cursor {
+            0%, 100% { border-right-color: var(--white); }
+            50% { border-right-color: transparent; }
+        }
+
         /* Шапка */
         .sticky-header {
             position: fixed;
@@ -237,19 +251,56 @@
             display: inline-block;
         }
 
-        .learn-more {
-            font-size: 1.3rem;
-            font-weight: 500;
+        .code-container {
+            background: var(--code-bg);
+            border-radius: 8px;
+            padding: 20px;
             max-width: 600px;
-            display: inline-block;
-            padding: 5px 10px;
-            transition: border 0.2s ease;
+            width: 100%;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            overflow: hidden;
+            position: relative;
+            margin-top: 20px;
         }
 
-        .learn-more:active {
-            border: 2px solid var(--orange);
-            border-radius: 5px;
+        .code-container pre {
+            margin: 0;
+            white-space: pre-wrap;
+            overflow: hidden;
+            animation: typing 2s steps(30, end) forwards;
+            width: 0;
+            display: inline-block;
+            border-right: 2px solid var(--white);
+            animation-delay: 0.6s;
+            animation-fill-mode: forwards;
         }
+
+        .code-container pre::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 1.2rem;
+            background: var(--white);
+            animation: cursor 0.5s infinite;
+            animation-play-state: paused;
+        }
+
+        .code-container pre.typed {
+            animation: none;
+            width: auto;
+            border-right: none;
+        }
+
+        .code-container pre.typed::after {
+            animation-play-state: running;
+        }
+
+        .keyword { color: var(--keyword); }
+        .string { color: var(--string); }
+        .class { color: var(--class); }
+        .variable { color: var(--variable); }
 
         /* Подвал */
         footer {
@@ -306,8 +357,9 @@
                 font-size: 1rem;
             }
 
-            .learn-more {
-                font-size: 1.1rem;
+            .code-container {
+                font-size: 0.8rem;
+                padding: 15px;
             }
         }
 
@@ -328,8 +380,9 @@
                 font-size: 1rem;
             }
 
-            .learn-more {
-                font-size: 1rem;
+            .code-container {
+                font-size: 0.7rem;
+                padding: 10px;
             }
 
             nav ul li a {
@@ -366,7 +419,22 @@
     <div class="description">
         Привет! я <span class="nickname"><span style="color: #FBAE4F">k</span><span style="color: #F3A74E">a</span><span style="color: #EAA04C">r</span><span style="color: #E2994B">e</span><span style="color: #D9924A">p</span><span style="color: #D18B49">a</span><span style="color: #C88347">n</span><span style="color: #C07C46">o</span><span style="color: #B77545">v</span><span style="color: #AF6E43">3</span><span style="color: #A66742">5</span></span> я создал свой личный сайт где будет вся информация обо мне и тд...
     </div>
-    <a href="about.html" class="learn-more" aria-label="Learn more about Ruslan Karepanov">Узнать Больше информации обо мне...</a>
+    <div class="code-container">
+            <pre><code><span class="keyword">namespace</span> karepanov;
+
+<span class="keyword">use</span> pocketmine\plugin\<span class="class">PluginBase</span>;
+
+<span class="keyword">class</span> <span class="class">karepanov</span> <span class="keyword">extends</span> <span class="class">PluginBase</span> {
+    <span class="keyword">public function</span> <span class="keyword">onEnable</span>(): <span class="keyword">void</span> {
+        <span class="variable">$this</span>->getLogger()->info(<span class="string">"karepanov enabled!"</span>);
+    }
+
+    <span class="keyword">public function</span> <span class="keyword">onDisable</span>(): <span class="keyword">void</span> {
+        <span class="variable">$this</span>->getLogger()->info(<span class="string">"karepanov disabled!"</span>);
+    }
+}
+</code></pre>
+    </div>
 </main>
 
 <footer>
@@ -391,7 +459,7 @@
         });
 
         // Анимация элементов
-        const elements = document.querySelectorAll('.title, .quote, .description, .learn-more');
+        const elements = document.querySelectorAll('.title, .quote, .description, .code-container');
         elements.forEach((element, index) => {
             element.style.opacity = '0';
             element.style.transform = 'translateY(20px)';
@@ -400,6 +468,12 @@
                 element.style.transform = 'translateY(0)';
                 element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             }, 300 + index * 100);
+        });
+
+        // Остановка анимации печати и курсора после завершения
+        const codePre = document.querySelector('.code-container pre');
+        codePre.addEventListener('animationend', () => {
+            codePre.classList.add('typed');
         });
     });
 </script>
