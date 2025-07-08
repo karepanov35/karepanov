@@ -361,102 +361,102 @@
     </style>
 </head>
 <body>
-    <!-- Анимированный фон -->
-    <div class="animated-bg">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="circle"></div>
-        <div class="circle"></div>
-        <div class="square"></div>
+<!-- Анимированный фон -->
+<div class="animated-bg">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="square"></div>
+</div>
+
+<header class="sticky-header">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#" class="active">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="projects-section">
+    <h2>Мои проекты</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <h3>AoLanguage</h3>
+            <p>Плагин для PocketMine-MP, обеспечивающий мультиязычную поддержку на серверах Minecraft. Позволяет игрокам выбирать язык интерфейса, упрощая взаимодействие для международного сообщества. Написан на PHP с акцентом на производительность и простоту интеграции.</p>
+            <a href="#" class="download-button" aria-label="Download AoLanguage plugin"><i class="fas fa-download"></i> Download</a>
+            <span class="hashtag">#pocketmine-pm5</span>
+        </div>
+        <div class="project-card">
+            <h3>Seasons</h3>
+            <p>Плагин для PocketMine-MP, добавляющий динамическую систему сезонов в игровой мир. Включает изменения погоды, текстур и событий, зависящих от времени года, для повышения вовлечённости игроков. Разработан с использованием PHP и API сервера.</p>
+        </div>
+        <div class="project-card">
+            <h3>Quests</h3>
+            <p>Плагин для PocketMine-MP, реализующий систему квестов. Игроки могут выполнять задания, получать награды и участвовать в сюжетных линиях. Разработан для гибкости, с поддержкой кастомизации через конфигурационные файлы.</p>
+        </div>
     </div>
-    
-    <header class="sticky-header">
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="#" class="active">Projects</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+</main>
 
-    <main class="projects-section">
-        <h2>Мои проекты</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <h3>AoLanguage</h3>
-                <p>Плагин для PocketMine-MP, обеспечивающий мультиязычную поддержку на серверах Minecraft. Позволяет игрокам выбирать язык интерфейса, упрощая взаимодействие для международного сообщества. Написан на PHP с акцентом на производительность и простоту интеграции.</p>
-                <a href="#" class="download-button" aria-label="Download AoLanguage plugin"><i class="fas fa-download"></i> Download</a>
-                <span class="hashtag">#pocketmine-pm5</span>
+<footer>
+    <div class="footer-content">
+        <p>© 2023 Ruslan Karepanov. All rights reserved</p>
+        <div class="scroll-hint">
+            <div class="mouse">
+                <div class="wheel"></div>
             </div>
-            <div class="project-card">
-                <h3>Seasons</h3>
-                <p>Плагин для PocketMine-MP, добавляющий динамическую систему сезонов в игровой мир. Включает изменения погоды, текстур и событий, зависящих от времени года, для повышения вовлечённости игроков. Разработан с использованием PHP и API сервера.</p>
-            </div>
-            <div class="project-card">
-                <h3>Quests</h3>
-                <p>Плагин для PocketMine-MP, реализующий систему квестов. Игроки могут выполнять задания, получать награды и участвовать в сюжетных линиях. Разработан для гибкости, с поддержкой кастомизации через конфигурационные файлы.</p>
-            </div>
+            <p>Листайте вниз</p>
         </div>
-    </main>
+    </div>
+</footer>
 
-    <footer>
-        <div class="footer-content">
-            <p>© 2023 Ruslan Karepanov. All rights reserved</p>
-            <div class="scroll-hint">
-                <div class="mouse">
-                    <div class="wheel"></div>
-                </div>
-                <p>Листайте вниз</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Анимация фона
-            const bgElements = document.querySelectorAll('.animated-bg > *');
-            bgElements.forEach(el => {
-                const randomDelay = Math.random() * 2;
-                el.style.animationDelay = `${randomDelay}s`;
-            });
-
-            // Анимация проектных карточек, кнопки и хештега
-            const projectCards = document.querySelectorAll('.project-card');
-            const downloadButton = document.querySelector('.download-button');
-            const hashtag = document.querySelector('.hashtag');
-            projectCards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                }, 300 + index * 100);
-            });
-
-            if (downloadButton) {
-                downloadButton.style.opacity = '0';
-                downloadButton.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    downloadButton.style.opacity = '1';
-                    downloadButton.style.transform = 'translateY(0)';
-                    downloadButton.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                }, 600);
-            }
-
-            if (hashtag) {
-                hashtag.style.opacity = '0';
-                hashtag.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    hashtag.style.opacity = '1';
-                    hashtag.style.transform = 'translateY(0)';
-                    hashtag.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                }, 700);
-            }
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Анимация фона
+        const bgElements = document.querySelectorAll('.animated-bg > *');
+        bgElements.forEach(el => {
+            const randomDelay = Math.random() * 2;
+            el.style.animationDelay = `${randomDelay}s`;
         });
-    </script>
+
+        // Анимация проектных карточек, кнопки и хештега
+        const projectCards = document.querySelectorAll('.project-card');
+        const downloadButton = document.querySelector('.download-button');
+        const hashtag = document.querySelector('.hashtag');
+        projectCards.forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            }, 300 + index * 100);
+        });
+
+        if (downloadButton) {
+            downloadButton.style.opacity = '0';
+            downloadButton.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                downloadButton.style.opacity = '1';
+                downloadButton.style.transform = 'translateY(0)';
+                downloadButton.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            }, 600);
+        }
+
+        if (hashtag) {
+            hashtag.style.opacity = '0';
+            hashtag.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                hashtag.style.opacity = '1';
+                hashtag.style.transform = 'translateY(0)';
+                hashtag.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            }, 700);
+        }
+    });
+</script>
 </body>
 </html>
