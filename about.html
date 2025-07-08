@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruslan Karepanov | About</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Глобальные стили */
+        :root {
+            --black: #000;
+            --white: #fff;
+            --gray: #1a1a1a;
+            --light-gray: #333;
+            --accent: #fff;
+            --php-color: #787CB5;
+            --js-color: #F7DF1E;
+            --css-color: #33A9DC;
+            --html-color: #E34F26;
+            --python-color: #3776AB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        a {
+            color: var(--white);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        a:hover {
+            opacity: 0.7;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Анимированный фон */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .line {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.05);
+            animation: float 15s infinite linear;
+        }
+
+        .line:nth-child(1) {
+            width: 1px;
+            height: 150%;
+            top: -25%;
+            left: 15%;
+            animation-duration: 20s;
+        }
+
+        .line:nth-child(2) {
+            width: 1px;
+            height: 120%;
+            top: -10%;
+            left: 70%;
+            animation-duration: 25s;
+            animation-direction: reverse;
+        }
+
+        .line:nth-child(3) {
+            width: 150%;
+            height: 1px;
+            top: 40%;
+            left: -25%;
+            animation-duration: 18s;
+        }
+
+        .circle {
+            position: absolute;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 50%;
+            animation: pulse 8s infinite ease-in-out;
+        }
+
+        .circle:nth-child(4) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            right: 15%;
+        }
+
+        .circle:nth-child(5) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 2s;
+        }
+
+        .square {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            bottom: 15%;
+            right: 20%;
+            animation: rotate 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-50px) rotate(1deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.5; }
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Шапка */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        nav ul li a.active::after,
+        nav ul li a:hover::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--white);
+            transform: scaleX(1);
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--white);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Секция о себе */
+        .about-section {
+            padding: 100px 5% 150px;
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 15px;
+            border: 2px solid var(--light-gray);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .nickname {
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .nickname span {
+            display: inline-block;
+        }
+
+        .section-divider {
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+            margin: 20px 0;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .info-item {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .info-item strong {
+            color: var(--accent);
+        }
+
+        /* Прогресс-бар для языков */
+        .skills {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .skill-bar {
+            margin-bottom: 15px;
+        }
+
+        .skill-bar label {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+
+        .progress {
+            width: 100%;
+            height: 20px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .progress-fill {
+            height: 100%;
+            transition: width 1s ease-in-out;
+        }
+
+        .progress-fill.php {
+            background: var(--php-color);
+        }
+
+        .progress-fill.js {
+            background: var(--js-color);
+        }
+
+        .progress-fill.css {
+            background: var(--css-color);
+        }
+
+        .progress-fill.html {
+            background: var(--html-color);
+        }
+
+        .progress-fill.python {
+            background: var(--python-color);
+        }
+
+        .skill-legend {
+            font-size: 0.9rem;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        /* Секции персонажа и автомобилей */
+        .character-image, .car-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--light-gray);
+            margin: 0 auto 10px;
+        }
+
+        .character-image img, .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .car-item {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .car-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Подвал */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            padding: 20px 5%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .scroll-hint {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        .mouse {
+            width: 25px;
+            height: 40px;
+            border: 2px solid white;
+            border-radius: 20px;
+            position: relative;
+        }
+
+        .wheel {
+            width: 4px;
+            height: 8px;
+            background: white;
+            border-radius: 2px;
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scroll 2s infinite;
+        }
+
+        @keyframes scroll {
+            0% { top: 5px; opacity: 1; }
+            30% { opacity: 1; }
+            100% { top: 15px; opacity: 0; }
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .sticky-header {
+                justify-content: center;
+            }
+
+            .nickname {
+                font-size: 1.8rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .avatar {
+                width: 100px;
+                height: 100px;
+            }
+
+            .nickname {
+                font-size: 1.5rem;
+            }
+
+            .info-item {
+                font-size: 0.9rem;
+            }
+
+            .car-item h3 {
+                font-size: 1.2rem;
+            }
+
+            .character-image, .car-image {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Анимированный фон -->
+<div class="animated-bg">
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="line"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="square"></div>
+</div>
+
+<header class="sticky-header">
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#" class="active">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="about-section">
+    <div class="profile-header">
+        <div class="avatar">
+            <img src="files/avatars/avatar.png" alt="Ruslan Karepanov">
+        </div>
+        <div class="nickname">
+            <span style="color: #FBAE4F">k</span><span style="color: #F3A74E">a</span><span style="color: #EAA04C">r</span><span style="color: #E2994B">e</span><span style="color: #D9924A">p</span><span style="color: #D18B49">a</span><span style="color: #C88347">n</span><span style="color: #C07C46">o</span><span style="color: #B77545">v</span><span style="color: #AF6E43">3</span><span style="color: #A66742">5</span>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+    <h2>Личная информация</h2>
+    <div class="info-item"><strong>Имя:</strong> Руслан Карепанов</div>
+    <div class="info-item"><strong>Место проживания:</strong> Хабаровск, Хабаровский край</div>
+    <div class="info-item"><strong>О себе:</strong> Я страстный разработчик, который любит совмещать техническую точность с творческим подходом. Моя цель — создавать продукты, которые радуют пользователей функциональностью и эстетикой. В свободное время изучаю новые технологии, играю в Minecraft и работаю над улучшением игрового опыта для сообщества.</div>
+    <div class="info-item"><strong>Контакт:</strong> Свяжитесь со мной через социальные сети или по электронной почте для обсуждения проектов и сотрудничества.</div>
+    <div class="section-divider"></div>
+    <h2>Мои умения в языках</h2>
+    <div class="skills">
+        <div class="skill-bar">
+            <label>Навыки программирования</label>
+            <div class="progress">
+                <div class="progress-fill php" style="width: 65.90%;"></div>
+                <div class="progress-fill js" style="width: 7.77%;"></div>
+                <div class="progress-fill css" style="width: 10.33%;"></div>
+                <div class="progress-fill html" style="width: 10%;"></div>
+                <div class="progress-fill python" style="width: 10%;"></div>
+            </div>
+            <div class="skill-legend">
+                <span style="color: var(--php-color);">PHP: 65.90%</span> |
+                <span style="color: var(--js-color);">JavaScript: 7.77%</span> |
+                <span style="color: var(--css-color);">CSS: 10.33%</span> |
+                <span style="color: var(--html-color);">HTML: 10%</span> |
+                <span style="color: var(--python-color);">Python: 10%</span>
+            </div>
+        </div>
+    </div>
+    <div class="section-divider"></div>
+    <h2>Любимый аниме персонаж</h2>
+    <div class="character-image">
+        <img src="https://static.wikia.nocookie.net/tokyo-revengers/images/8/8f/Izana_Kurokawa_%28Manga%29.png/revision/latest?cb=20220411060906" alt="Izana Kurokawa">
+    </div>
+    <div class="info-item"><strong>Izana Kurokawa (Tokyo Revengers):</strong> Идзана Курокава — харизматичный и сложный персонаж, бывший лидер банды Тэндзику и восьмого поколения Черных Драконов. Полуфилиппинец, полуяпонец, он выделяется светло-коричневой кожей, белыми волосами и фиолетовыми глазами. Его трагическое детство, полное одиночества и предательства, сформировало его жестокий и мстительный характер, но в глубине души он сохраняет стремление к созданию собственного "королевства" вместе с верным другом Какучо. Идзана — мощный боец с уникальными боевыми навыками, способный соперничать даже с Майки. Его история — это смесь боли, амбиций и редких моментов человечности, что делает его одним из самых запоминающихся антагонистов в серии. <cite>(<a href="https://tokyorevengers.fandom.com/wiki/Izana_Kurokawa" target="_blank">Tokyo Revengers Wiki</a>)</cite></div>
+    <div class="section-divider"></div>
+    <h2>Мои любимые автомобили</h2>
+    <div class="car-item">
+        <h3>Nissan Laurel C35 Club S/Medalist</h3>
+        <div class="car-image">
+            <img src="files/cars/laurelc35.png" alt="Nissan Laurel C35">
+        </div>
+        <div class="info-item">Nissan Laurel C35 (1997–2002) — элегантный седан, сочетающий классический японский дизайн с комфортом премиум-класса. Оснащён двигателями RB20DE (2.0L, 155 л.с.) или RB25DET (2.5L турбо, 235 л.с.), обеспечивающими плавное ускорение и динамику. Задний привод и спортивная подвеска Club S делают его идеальным для дрифта, а Medalist предлагает роскошный интерьер с кожей и деревом. Отличается утончённым стилем и надёжностью, что делает его культовым среди JDM-энтузиастов.</div>
+    </div>
+    <div class="car-item">
+        <h3>Toyota Chaser 100</h3>
+        <div class="car-image">
+            <img src="files/cars/chaser100.png" alt="Toyota Chaser 100">
+        </div>
+        <div class="info-item">Toyota Chaser JZX100 (1996–2001) — легендарный спортивный седан JDM, популярный в дрифт-культуре. Оснащён двигателем 1JZ-GTE (2.5L турбо, 280 л.с.), обеспечивающим мощное ускорение и отзывчивость. Задний привод, прочная платформа и тюнинговый потенциал делают его фаворитом среди автолюбителей. Стильный кузов и агрессивный обвес Tourer V подчёркивают его спортивный характер.</div>
+    </div>
+    <div class="car-item">
+        <h3>Nissan 180SX</h3>
+        <div class="car-image">
+            <img src="files/cars/sx180.png" alt="Nissan 180SX">
+        </div>
+        <div class="info-item">Nissan 180SX (1989–1998) — культовый хэтчбек, икона дрифта благодаря лёгкому кузову и заднему приводу. Оснащён двигателями SR20DET (2.0L турбо, 205 л.с.) или CA18DET (1.8L турбо, 169 л.с.). Выдвижные фары и аэродинамичный дизайн делают его узнаваемым, а баланс шасси идеален для дрифта и тюнинга. Надёжный и харизматичный автомобиль, любимый фанатами JDM.</div>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <p>© 2023 Ruslan Karepanov. All rights reserved</p>
+        <div class="scroll-hint">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <p>Листайте вниз</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Анимация элементов при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+        // Анимация аватара и ника
+        const avatar = document.querySelector('.avatar');
+        const nickname = document.querySelector('.nickname');
+        avatar.style.opacity = '0';
+        avatar.style.transform = 'translateY(20px)';
+        nickname.style.opacity = '0';
+        nickname.style.transform = 'translateY(20px)';
+
+        setTimeout(() => {
+            avatar.style.opacity = '1';
+            avatar.style.transform = 'translateY(0)';
+            avatar.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        }, 300);
+
+        setTimeout(() => {
+            nickname.style.opacity = '1';
+            nickname.style.transform = 'translateY(0)';
+            nickname.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        }, 500);
+
+        // Анимация контента
+        const contentItems = document.querySelectorAll('.info-item, h2, .skill-bar');
+        contentItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateY(0)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            }, 700 + index * 100);
+        });
+
+        // Анимация прогресс-бара
+        const progressFills = document.querySelectorAll('.progress-fill');
+        progressFills.forEach(fill => {
+            const width = fill.style.width;
+            fill.style.width = '0';
+            setTimeout(() => {
+                fill.style.width = width;
+            }, 1000);
+        });
+
+        // Анимация изображений персонажа и автомобилей
+        const images = document.querySelectorAll('.character-image, .car-image');
+        images.forEach((image, index) => {
+            image.style.opacity = '0';
+            image.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                image.style.opacity = '1';
+                image.style.transform = 'translateY(0)';
+                image.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            }, 1200 + index * 200);
+        });
+
+        // Анимация фона
+        const bgElements = document.querySelectorAll('.animated-bg > *');
+        bgElements.forEach(el => {
+            const randomDelay = Math.random() * 2;
+            el.style.animationDelay = `${randomDelay}s`;
+        });
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    });
+</script>
+</body>
+</html>
